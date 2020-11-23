@@ -18,6 +18,15 @@ public class PharmacieService {
 
     }
 
+    @RequestMapping(value = "/pharmacie/pharmacie/delete/{id}",method = RequestMethod.DELETE)
+    public List<Pharmacie> delete(@PathVariable int id){
+        if (pharmaciedao.getById(id) != null){
+            pharmaciedao.delete(pharmaciedao.getById(id));
+        }
+        return pharmaciedao.findAll();
+
+    }
+
     @RequestMapping(value = "/pharmacie/pharmacie/save",method = RequestMethod.POST)
     public List<Pharmacie> save(Pharmacie pharmacie){
         pharmaciedao.save(pharmacie);
