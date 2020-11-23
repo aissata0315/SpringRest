@@ -33,6 +33,12 @@ public class PharmacieService {
         return pharmaciedao.findAll();
     }
 
+    @RequestMapping(value = "/pharmacie/pharmacie/{id}",method = RequestMethod.PUT)
+    public int update(@PathVariable int id, Pharmacie pharmacie){
+        pharmacie.setId(id);
+        pharmaciedao.save(pharmacie);
+        return 1;
+        }
+    }
 
 
-}
