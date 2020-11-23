@@ -13,13 +13,17 @@ public class PharmacieService {
     private IPharmacie pharmaciedao;
 
     @RequestMapping(value = "/pharmacie/pharmacie",method = RequestMethod.GET)
-    public List<Pharmacie> getAll(){
+    public List<Pharmacie> getAllPharmacieOuvert(@RequestParam int etat){
+        return pharmaciedao.getAllPharmacieOuvert(etat);
+
+    }
+
+    @RequestMapping(value = "/pharmacie/pharmacie/save",method = RequestMethod.POST)
+    public List<Pharmacie> save(Pharmacie pharmacie){
+        pharmaciedao.save(pharmacie);
         return pharmaciedao.findAll();
     }
 
-    @RequestMapping(value = "/pharmacie/pharmacieouvert",method = RequestMethod.GET)
-    public List<Pharmacie> getAllPharmacieOuvert(@RequestParam int etat){
-        return pharmaciedao.getAllPharmacieOuvert(etat);
-    }
+
 
 }
